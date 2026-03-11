@@ -22,12 +22,12 @@ public class SistemaPrincipalPassageiro {
 
         // Exibindo dados finais
         System.out.println("\n--- Dados Finais ---");
-        System.out.println("Passageiro: " + passageiro1.nome +
-                " | CPF: " + passageiro1.cpf +
-                " | Saldo: R$" + passageiro1.saldo);
+        System.out.println("Passageiro: " + passageiro1.getNome() +
+                " | CPF: " + passageiro1.getCpf() +
+                " | Saldo: R$" + passageiro1.getSaldo());
 
-        System.out.println("Passageiro: " + passageiro2.nome +
-                " | CPF: " + passageiro2.cpf +
-                " | Saldo: R$" + passageiro2.saldo);
+        System.out.println("Passageiro: " + passageiro2.getNome() +
+                " | CPF: " + passageiro2.getCpf() +
+                " | Saldo: R$" + passageiro2.getSaldo());
     }
 }

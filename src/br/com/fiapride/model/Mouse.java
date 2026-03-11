@@ -1,13 +1,52 @@
 package br.com.fiapride.model;
 
-
 public class Mouse {
-    // Atributos (Características)
-    public String cor;
-    public String marca;
-    public int nivelBateria;
 
-    // Método 1 - Usar mouse (diminui bateria)
+    // Atributos privados
+    private String cor;
+    private String marca;
+    private int nivelBateria;
+
+    // CONSTRUTOR
+    // Todo mouse precisa ter cor, marca e bateria inicial
+    public Mouse(String cor, String marca, int nivelBateria) {
+        this.setCor(cor);
+        this.setMarca(marca);
+        this.setNivelBateria(nivelBateria); // regra de negócio aplicada
+    }
+
+    // get
+    public String getCor() {
+        return this.cor;
+    }
+
+    public String getMarca() {
+        return this.marca;
+    }
+
+    public int getNivelBateria() {
+        return this.nivelBateria;
+    }
+
+    // set
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    // nível de bateria só entre 0 e 100
+    private void setNivelBateria(int valor) {
+        if (valor >= 0 && valor <= 100) {
+            this.nivelBateria = valor;
+        } else {
+            System.out.println("Erro de Segurança: Nível de bateria inválido!");
+        }
+    }
+
+    // Usar e carregar
     public void usar(int consumo) {
 
         if (consumo <= 0) {
@@ -15,16 +54,16 @@ public class Mouse {
             return;
         }
 
-        if (nivelBateria < consumo) {
+        if (this.nivelBateria < consumo) {
             System.out.println("Bateria insuficiente.");
             return;
         }
 
-        nivelBateria -= consumo;
-        System.out.println("Mouse usado. Bateria atual: " + nivelBateria + "%");
+        this.setNivelBateria(this.nivelBateria - consumo);
+
+        System.out.println("Mouse usado. Bateria atual: " + this.nivelBateria + "%");
     }
 
-    // Método 2 - Carregar mouse (aumenta bateria)
     public void carregar(int carga) {
 
         if (carga <= 0) {
@@ -32,12 +71,13 @@ public class Mouse {
             return;
         }
 
-        if (nivelBateria + carga > 100) {
-            nivelBateria = 100;
+        if (this.nivelBateria + carga > 100) {
+            this.setNivelBateria(100);
         } else {
-            nivelBateria += carga;
+            this.setNivelBateria(this.nivelBateria + carga);
         }
 
-        System.out.println("Mouse carregado. Bateria atual: " + nivelBateria + "%");
+        System.out.println("Mouse carregado. Bateria atual: " + this.nivelBateria + "%");
     }
+
 }
